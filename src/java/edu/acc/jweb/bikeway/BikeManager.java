@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 
@@ -28,6 +29,49 @@ public class BikeManager {
             throw new RuntimeException(sqle);
         } 
         return list;
+    }
+    
+    public void deleteBikeById(Integer id) {
+        String sql = "DELETE FROM Bikes WHERE id = " + id;
+        Statement statement = null;
+        Connection connection = null;
+        try {
+            connection = dataSource.getConnection();
+            statement = connection.createStatement();
+            int executeUpdate = statement.executeUpdate(sql);
+            } catch(SQLException sqle) {
+                throw new RuntimeException(sqle);
+            } finally {
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    } catch(SQLException sqle) {
+                        throw new RuntimeException(sqle);
+                    }
+                }
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch(SQLException sqle) {
+                        throw new RuntimeException(sqle);
+                    }
+                }
+            }
+    }
+    
+    public Bike findBikeById(Integer id) {
+        Bike bike = null;
+        String sql = "select * from Bikes where id = " + id;
+        try (Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                bike = bikeFromDB(resultSet);
+            }
+        } catch(SQLException sqle) {
+            throw new RuntimeException(sqle);
+        }
+        return bike;
     }
     
     private Bike bikeFromDB(ResultSet resultSet) {

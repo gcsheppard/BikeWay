@@ -18,6 +18,7 @@ public class BikeWayServlet extends HttpServlet {
         ArrayList<Bike> bikes = null;
         BikeManager bikeManager = (BikeManager) getServletContext().getAttribute("bikeManager");
         bikes = bikeManager.getBikes();
+        request.setAttribute("bikes", bikes);
         getServletContext().getRequestDispatcher("/WEB-INF/views/bikes.jsp").forward(request, response);
     }
 }

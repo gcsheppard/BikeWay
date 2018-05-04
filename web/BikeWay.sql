@@ -12,9 +12,9 @@ CREATE TABLE Bikes (
 INSERT INTO Bikes(model, manufacturer, name, type) 
     VALUES('M101', 'Specialized', 'Rockhopper', 'Mountain');
 INSERT INTO Bikes(model, manufacturer, name, type) 
-    VALUES('M102', 'Specialized', 'Stimpjumper', 'Mountain');
+    VALUES('M102', 'Specialized', 'Stumpjumper', 'Mountain');
 INSERT INTO Bikes(model, manufacturer, name, type) 
-    VALUES('M102B', 'Specialized', 'Stimpjumper Sport', 'Mountain');
+    VALUES('M102B', 'Specialized', 'Stumpjumper Sport', 'Mountain');
 INSERT INTO Bikes(model, manufacturer, name, type) 
     VALUES('M103', 'Specialized', 'Hardtail', 'Mountain');
 INSERT INTO Bikes(model, manufacturer, name, type) 
