@@ -23,6 +23,7 @@ public class BikeWayListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        sce.getServletContext().setAttribute("bikeManager", new BikeManager(dataSource));
     }
 
     @Override
