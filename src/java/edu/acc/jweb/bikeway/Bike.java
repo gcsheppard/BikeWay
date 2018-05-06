@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Bike {
-    private int id;
-    private String model;
-    private String manufacturer;
-    private String name;
-    private String type;
-    private Date created;
+    public int id;
+    public String model;
+    public String manufacturer;
+    public String name;
+    public String type;
+    public Date created;
     
     public Bike (String model, String manufacturer, String name, String type) {
         this.model = model;

@@ -20,10 +20,11 @@ public class BikeDeleteServlet extends HttpServlet {
         } else {
             BikeManager bikeManager = (BikeManager) getServletContext().getAttribute("bikeManager");
             bikeManager.deleteBikeById(id);
-            ArrayList<Bike> bikes = null;
-            bikes = bikeManager.getBikes();
-            request.setAttribute("bikes", bikes);
-            getServletContext().getRequestDispatcher("/WEB-INF/views/bikes.jsp").forward(request, response);
+            response.sendRedirect("/BikeWay/bikes");
+            //ArrayList<Bike> bikes = null;
+            //bikes = bikeManager.getBikes();
+            //request.setAttribute("bikes", bikes);
+            //getServletContext().getRequestDispatcher("/WEB-INF/views/bikes.jsp").forward(request, response);
         }    
     }
         private Integer integerFromParameter(HttpServletRequest request) {

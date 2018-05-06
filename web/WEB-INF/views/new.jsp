@@ -9,12 +9,27 @@
         <h2>Enter New Product Information:</h2>
      <body>
         <form action="new" method="post">
-            <div class="b"><input type="text" name="model" value="${book.model}" placeholder="Model"}></div><br>
-            <div class="b"><input type="text" name="manufacturer" value="${book.manufacturer}" placeholder="Manufacturer"></div><br>
-            <div class="b"><input type="text" name="name" value="${book.name}" placeholder="Name"></div><br>
-            <div class="b"><input type="text" name="type" value="${book.type}" placeholder="Type"></div><br>
+            <div class="b">Model: <input type="text" name="model" value="${bike.model}" placeholder="Model"}></div><br>
+            <div class="b">Manufacturer: <input type="text" name="manufacturer" value="${bike.manufacturer}" placeholder="Manufacturer"></div><br>
+            <div class="b">Name: <input type="text" name="name" value="${bike.name}" placeholder="Name"></div><br>
+            <div class="b">Type: <input type="text" name="type" value="${bike.type}" placeholder="Type"></div><br>
             <div class="c"><input type="submit" value="Save" /><br>
         </form>  
-            <br><div class="e">${errors}</div>
+            
+        <c:choose>
+            <c:when test = "${errors != null}">
+                <br><br><div class="e">Errors:</div>
+                <ul>
+                <c:forEach var="error" items="${errors.values()}">
+                    <li>
+                        <div class="e">${error}</div>
+                    </li>
+                </c:forEach>
+                </ul>
+            </c:when>
+        </c:choose>        
+                
+        <br><br><div class="d"><a href="/BikeWay/bikes">Return to list</a></div><br>
+            
     </body>
 </html>
